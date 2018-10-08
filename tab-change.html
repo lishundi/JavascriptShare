@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tab 选项卡效果</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #tab{
+            width:600px;
+            height:500px;
+            border:5px solid purple;
+            margin:0 auto;
+            position: relative;
+        }
+        #tab ul li{
+            list-style: none;
+            float: left;
+            width:200px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            font-size: 30px;
+
+        }
+        #tab .con{
+            width: 580px;
+            height: 420px;
+            left:10px;
+            top: 60px;
+            position: absolute;//相对于父级元素定位一下
+        display: none;
+        }
+    </style>
+</head>
+<script>
+    window.onload = function(){
+        var tab = document.getElementById("tab");//通过id 获取元素
+        var lis = document.getElementsByTagName("li");//通过标签名获取元素
+        var cons = document.getElementsByClassName("con");//通过class获取元素
+        //循环遍历每一个li标签
+        console.log(cons[0]);
+        for(var i = 0; i < lis.length; i ++){
+            lis[i].num = i;//给每一个标签加序号
+            lis[i].onmouseover = function(){//给每一个标签li加onmouseover事件
+                //显示之前先让所有的con隐藏
+                for(var j = 0; j < cons.length; j ++){
+                    cons[j].style.display = 'none';
+                }
+                // 让this.num对应的con显示,this在事件中指向的是事件源对象
+                cons[this.num].style.display  = 'block';
+            }
+        }
+    }
+</script>
+<body>
+<div id="tab">
+    <ul>
+        <li style="background-color: blue;">新闻</li>
+        <li style="background-color: orange;">热点</li>
+        <li style="background-color: green;">军事</li>
+
+    </ul>
+
+    <div class="con" style="background-color: blue;display:block;"></div>
+    <div class="con" style="background-color: orange"></div>
+    <div class="con" style="background-color: green"></div>
+</div>
+</body>
+</html>

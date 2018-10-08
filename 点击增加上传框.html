@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点击增加上传框</title>
+     <script>
+     window.onload = function () {
+     let btn = document.getElementById('btn');
+     let box = document.getElementById('box');
+     btn.onclick = function () {
+    //     创建新的input标签
+     let newfile = document.createElement('input');
+    //        设置type属性为file
+     newfile.setAttribute('type','file');
+    //        追加到父级元素里面
+     box.appendChild(newfile);
+     }
+    }
+     </script>
+
+</head>
+<body>
+<input type="button" id="btn" value="点我增加上传框">
+<div id="box">
+    <input type="file">
+</div>
+</body>
+</html>
